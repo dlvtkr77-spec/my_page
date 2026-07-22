@@ -2,371 +2,59 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>조현서 | Portfolio</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>조현서 | PM Portfolio</title>
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-/* Scroll Animation */
-
-.fade{
-    opacity:0;
-    transform:translateY(50px);
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
-.fade.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* Project */
-
-.project{
-    border-top:1px solid #e5e5e5;
-    padding:35px 0;
-}
-
-.project:first-child{
-    border-top:none;
-}
-
-.project h3{
-    font-size:30px;
-    font-weight:400;
-    margin-bottom:12px;
-}
-
-.project p{
-    color:#666;
-    margin-bottom:18px;
-    max-width:700px;
-}
-
-.project a{
-    font-size:15px;
-}
-
-.number{
-    color:#999;
-    font-size:14px;
-    margin-bottom:8px;
-}
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#ffffff;
-    color:#111;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Pretendard",
-        sans-serif;
-    line-height:1.8;
-}
-
-.container{
-    width:90%;
-    max-width:900px;
-    margin:auto;
-}
-
-section{
-    padding:90px 0;
-    border-bottom:1px solid #ececec;
-}
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-}
-
-.hero h1{
-    font-size:70px;
-    font-weight:300;
-    letter-spacing:-3px;
-    margin-bottom:10px;
-}
-
-.hero h2{
-    font-size:22px;
-    color:#666;
-    font-weight:400;
-}
-
-.title{
-    font-size:15px;
-    color:#888;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    margin-bottom:30px;
-}
-
-.content{
-    font-size:22px;
-    max-width:700px;
-}
-
-.list{
-    display:grid;
-    gap:18px;
-}
-
-.item{
-    display:flex;
-    justify-content:space-between;
-    padding:18px 0;
-    border-bottom:1px solid #eee;
-}
-
-.item:last-child{
-    border:none;
-}
-
-.left{
-    font-size:20px;
-}
-
-.right{
-    color:#777;
-}
-
-.skill{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.tag{
-    padding:10px 18px;
-    border:1px solid #111;
-    border-radius:999px;
-    font-size:14px;
-}
-
-footer{
-    padding:50px 0;
-    text-align:center;
-    color:#999;
-    font-size:14px;
-}
-
-a{
-    color:#111;
-    text-decoration:none;
-}
-
-a:hover{
-    text-decoration:underline;
-}
-
-@media(max-width:700px){
-
-.hero h1{
-    font-size:46px;
-}
-
-.content{
-    font-size:18px;
-}
-
-.item{
-    flex-direction:column;
-    gap:8px;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#111}
+#progress{position:fixed;top:0;left:0;height:3px;background:#111;width:0;z-index:1000}
+header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:24px 8%;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid #eee;z-index:999}
+header a{text-decoration:none;color:#111;margin-left:24px}
+.container{width:min(1100px,90%);margin:auto}
+section{padding:110px 0;border-bottom:1px solid #eee}
+.hero{min-height:100vh;display:flex;align-items:center}
+.hero h1{font-size:72px;font-weight:300;line-height:1}
+.hero p.big{font-size:54px;line-height:1.1;margin:24px 0 16px}
+.subtitle{color:#666}
+.gray{background:#f6f6f6}
+.title{font-size:13px;letter-spacing:3px;color:#888;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.card{padding:28px;border:1px solid #ddd;transition:.3s}
+.card:hover{background:#111;color:#fff;transform:translateY(-6px)}
+.timeline{border-left:2px solid #ddd;padding-left:28px}
+.event{margin-bottom:36px}
+.year{font-size:32px;font-weight:300}
+.contact{background:#111;color:#fff;text-align:center}
+.fade{opacity:0;transform:translateY(40px);transition:.8s}
+.fade.show{opacity:1;transform:none}
+footer{padding:30px}
+@media(max-width:700px){.hero h1{font-size:46px}.hero p.big{font-size:34px}}
 </style>
-
 </head>
-<script>
-
-const observer = new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-
-        }
-
-    });
-
-},{
-    threshold:0.15
-});
-
-document.querySelectorAll(".fade").forEach(el=>{
-
-    observer.observe(el);
-
-});
-
-</script>
 <body>
-
+<div id="progress"></div>
+<header><strong>CHO HYUNSEO</strong><nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav></header>
 <div class="container">
-
 <section class="hero">
-
-<div>
-
-<h1>조현서</h1>
-
-<h2>Product Manager Portfolio</h2>
-
-</div>
-
+<div><h1>CHO HYUNSEO</h1><p class="big">Designing products<br>that solve<br>real problems.</p><p class="subtitle">Product Manager Portfolio</p></div>
 </section>
-
-<section>
-
-<div class="title">ABOUT</div>
-
-<p class="content">
-
-안녕하세요.
-
-사용자의 문제를 발견하고 해결하는 과정을 좋아하는
-PM 지망생 조현서입니다.
-
-AI 기술을 활용하여 더 나은 서비스를 만드는 Product Manager를
-목표로 공부하고 있습니다.
-
-</p>
-
-</section>
-
-<section>
-
-<div class="title">SKILLS</div>
-
-<div class="skill">
-
-<div class="tag">HTML</div>
-<div class="tag">CSS</div>
-<div class="tag">JavaScript</div>
-<div class="tag">Python</div>
-<div class="tag">AI</div>
-<div class="tag">Product Management</div>
-
+<section id="about" class="fade"><div class="title">ABOUT</div><h2>사용자를 이해하는 것이 좋은 제품의 시작이라고 믿습니다.</h2><br><p>AI를 활용한 서비스를 기획하는 PM을 목표로 학습하고 있습니다.</p></section>
+<section id="projects" class="gray fade"><div class="title">PROJECTS</div><div class="grid">
+<div class="card"><h3>AI Resume Assistant</h3><br><p>사용자 문제 정의부터 기능 설계까지 수행한 프로젝트.</p><br><small>Role · PM</small></div>
+<div class="card"><h3>Portfolio Website</h3><br><p>HTML/CSS/JavaScript로 제작한 개인 포트폴리오.</p><br><small>Role · Front-end</small></div>
+</div></section>
+<section class="fade"><div class="title">EXPERIENCE</div><div class="timeline">
+<div class="event"><div class="year">2024</div><p>생성형 AI 학습 시작</p></div>
+<div class="event"><div class="year">2025</div><p>PM 역량 및 서비스 기획 학습</p></div>
+<div class="event"><div class="year">2026</div><p>포트폴리오 구축</p></div>
+</div></section>
+<section id="contact" class="contact fade"><h2>Let's Build Something Meaningful.</h2><br><p>your@email.com</p><p>github.com/your-id</p></section>
+<footer>© 2026 CHO HYUNSEO</footer>
 </div>
-
-</section>
-
-<section>
-<section class="fade">
-
-    <div class="title">PROJECTS</div>
-
-    <div class="project">
-
-        <div class="number">01</div>
-
-        <h3>AI 서비스 기획</h3>
-
-        <p>
-
-            생성형 AI를 활용하여 사용자의 문제를 해결하는
-            서비스를 기획했습니다.
-            사용자 조사부터 기능 정의, 화면 설계까지 진행했습니다.
-
-        </p>
-
-        <a href="#">View Project →</a>
-
-    </div>
-
-    <div class="project">
-
-        <div class="number">02</div>
-
-        <h3>Portfolio Website</h3>
-
-        <p>
-
-            HTML, CSS, JavaScript만으로 제작한
-            개인 포트폴리오 웹사이트입니다.
-
-        </p>
-
-        <a href="#">GitHub →</a>
-
-    </div>
-
-</section>
-<div class="title">EXPERIENCE</div>
-
-<div class="list">
-
-<div class="item">
-
-<div class="left">AI Study</div>
-
-<div class="right">
-생성형 AI · 머신러닝 · 딥러닝 학습
-</div>
-
-</div>
-
-<div class="item">
-
-<div class="left">PM Study</div>
-
-<div class="right">
-사용자 중심 사고 · 서비스 기획
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="title">GOAL</div>
-
-<p class="content">
-
-데이터와 사용자 경험을 기반으로 문제를 정의하고,
-
-AI를 활용한 서비스를 설계하는 Product Manager가 되고 싶습니다.
-
-</p>
-
-</section>
-
-<section>
-
-<div class="title">CONTACT</div>
-
-<p>Email : your@email.com</p>
-<p>GitHub : github.com/your-id</p>
-
-</section>
-
-<footer>
-
-© 2026 JO HYUNSEO
-
-</footer>
-
-</div>
-
-</body>
-</html>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.15});
+document.querySelectorAll('.fade').forEach(e=>io.observe(e));
+addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%'});
+</script>
+</body></html>
