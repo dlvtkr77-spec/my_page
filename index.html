@@ -1,107 +1,421 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>자기소개 | 홍길동</title>
+  <meta name="description" content="간단한 1페이지 자기소개 사이트" />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,0.06);
+      --text: #e9eefc;
+      --muted: rgba(233,238,252,0.75);
+      --accent: #7aa2ff;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius: 16px;
+    }
 
-<!-- ========================================================= -->
-<!-- 바꾸는 곳 1. 브라우저 탭에 뜨는 이름입니다.                    -->
-<!-- ========================================================= -->
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 10%, rgba(122,162,255,0.25), transparent 60%),
+        radial-gradient(900px 500px at 90% 30%, rgba(143,255,196,0.14), transparent 55%),
+        radial-gradient(900px 500px at 30% 90%, rgba(255,154,122,0.12), transparent 60%),
+        var(--bg);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-<title>조현서 | 프로덕트 매니저</title>
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
 
-<style>
-  :root { --ink:#1a1a1a; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body {
-    font-family:-apple-system,'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif;
-    color:var(--ink); background:#fff; line-height:1.7;
-    -webkit-text-size-adjust:100%;
-  }
-  .wrap { max-width:720px; margin:0 auto; padding:64px 24px 96px; }
-  .name { font-size:44px; font-weight:800; letter-spacing:-0.02em; }
-  .role { font-size:19px; color:var(--muted); margin-top:10px; }
-  .rule { width:56px; height:4px; background:var(--ink); border-radius:2px; margin:28px 0 36px; }
-  .lead { font-size:20px; line-height:1.75; }
-  h2 { font-size:15px; font-weight:800; letter-spacing:0.06em; color:var(--muted);
-       margin:52px 0 18px; text-transform:uppercase; }
-  ul { list-style:none; }
-  li { padding:14px 0; border-bottom:1px solid var(--line); font-size:17px; }
-  li b { display:block; font-size:13px; color:var(--muted); font-weight:700; margin-bottom:4px; }
-  a { color:var(--accent); text-decoration:none; font-weight:700; }
-  a:hover { text-decoration:underline; }
-  .foot { margin-top:64px; padding-top:24px; border-top:1px solid var(--line);
-          font-size:14px; color:var(--muted); }
-  @media (max-width:600px) {
-    .wrap { padding:44px 20px 72px; }
-    .name { font-size:34px; }
-    .lead { font-size:18px; }
-  }
-</style>
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
 
+    header{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0 18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(122,162,255,0.15);
+    }
+
+    nav{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chip{
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--muted);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.06);
+      text-decoration: none;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-inner{ padding: 20px; }
+
+    .profile{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      margin-bottom: 14px;
+    }
+
+    .avatar{
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(122,162,255,0.9), rgba(143,255,196,0.7));
+      border: 1px solid rgba(255,255,255,0.18);
+      flex: 0 0 auto;
+    }
+
+    h1{
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .sub{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btns{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    button, .btn{
+      appearance: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease;
+    }
+    button:hover, .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.10);
+      text-decoration: none;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .muted{ color: var(--muted); }
+
+    ul{
+      margin: 10px 0 0;
+      padding: 0 0 0 18px;
+      color: var(--muted);
+    }
+
+    .taglist{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .tag{
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+    }
+
+    .footer{
+      margin-top: 18px;
+      padding: 14px 4px 0;
+      color: rgba(233,238,252,0.55);
+      font-size: 13px;
+      display:flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(10, 14, 28, 0.9);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    @media (max-width: 840px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>My 1-page Profile</span>
+      </div>
+      <nav aria-label="페이지 이동">
+        <a class="chip" href="#about">소개</a>
+        <a class="chip" href="#skills">스킬</a>
+        <a class="chip" href="#projects">프로젝트</a>
+        <a class="chip" href="#contact">연락처</a>
+      </nav>
+    </header>
 
-<div class="wrap">
+    <main>
+      <section class="hero card" id="about">
+        <div class="card-inner">
+          <div class="profile">
+            <div class="avatar" aria-hidden="true"></div>
+            <div>
+              <h1>홍길동</h1>
+              <p class="sub">프론트엔드 개발자 지망 · 사용성/성능에 관심</p>
+            </div>
+          </div>
 
+          <p class="muted">
+            안녕하세요! 저는 <strong>웹 프론트엔드</strong>를 공부하고 있는 홍길동입니다.
+            작은 기능이라도 “왜 이렇게 동작하는지” 이해하며 만드는 것을 좋아합니다.
+          </p>
 
+          <div class="btns">
+            <a class="btn" href="#projects">프로젝트 보기</a>
+            <button type="button" id="copyEmailBtn">이메일 복사</button>
+            <button type="button" id="themeBtn">테마 토글</button>
+          </div>
+        </div>
 
-  <!-- ========================================================= -->
-  <!-- 바꾸는 곳 2. 이름과 목표 직무입니다.                          -->
-  <!-- 실명이 부담되면 닉네임을 써도 됩니다.                          -->
-  <!-- ========================================================= -->
+        <div class="card-inner" style="border-left: 1px solid var(--border);">
+          <h2 class="section-title">요약</h2>
+          <ul>
+            <li>관심사: UI/UX, 웹 접근성, 성능 최적화</li>
+            <li>학습: HTML/CSS/JS, React 기초</li>
+            <li>목표: 사용자 친화적인 제품을 꾸준히 개선하는 개발자</li>
+          </ul>
 
-  <div class="name">조현서</div>
-  <div class="role">프로덕트 매니저를 준비합니다</div>
+          <div class="taglist" aria-label="키워드">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Web Accessibility</span>
+            <span class="tag">Performance</span>
+          </div>
+        </div>
+      </section>
 
-  <div class="rule"></div>
+      <section class="grid">
+        <article class="card" id="skills">
+          <div class="card-inner">
+            <h2 class="section-title">스킬</h2>
+            <p class="muted">현재 기준으로 자신있는/학습중인 기술을 적어보세요.</p>
+            <ul>
+              <li>HTML: 시맨틱 태그, 폼 구성</li>
+              <li>CSS: Flex/Grid, 반응형 레이아웃</li>
+              <li>JS: DOM 조작, 이벤트 처리, 간단한 상태 관리</li>
+            </ul>
+          </div>
+        </article>
 
-  <!-- ========================================================= -->
-  <!-- 바꾸는 곳 3. 나를 한 문장으로. (어제 만든 "캐릭터 한 문장")     -->
-  <!-- ========================================================= -->
+        <article class="card" id="projects">
+          <div class="card-inner">
+            <h2 class="section-title">프로젝트</h2>
+            <p class="muted">아래는 예시입니다. 실제 프로젝트로 교체하세요.</p>
+            <ul>
+              <li>
+                <strong>Todo Mini App</strong> — 로컬스토리지 기반 할 일 관리
+              </li>
+              <li>
+                <strong>Portfolio 1-Page</strong> — 자기소개/프로젝트 요약 페이지
+              </li>
+              <li>
+                <strong>API 연습</strong> — 공개 API로 리스트/검색 구현
+              </li>
+            </ul>
+          </div>
+        </article>
 
-  <p class="lead">
-    막힌 상황에서 원인을 정의하고, 실행 방식을 바꿔 실제 반응을 만들어 온 사람입니다.
-  </p>
+        <article class="card" id="contact">
+          <div class="card-inner">
+            <h2 class="section-title">연락처</h2>
+            <p class="muted">버튼을 누르면 클립보드로 이메일이 복사됩니다.</p>
+            <ul>
+              <li>Email: <span id="emailText">honggildong@example.com</span></li>
+              <li>GitHub: <a href="#" title="깃허브 주소로 바꾸세요">github.com/your-id</a></li>
+              <li>Blog: <a href="#" title="블로그 주소로 바꾸세요">your-blog.com</a></li>
+            </ul>
+          </div>
+        </article>
 
+        <article class="card">
+          <div class="card-inner">
+            <h2 class="section-title">한 줄 소개</h2>
+            <p class="muted" id="oneLine">
+              “작게 만들고, 빠르게 개선합니다.”
+            </p>
+            <button type="button" id="randomLineBtn">문구 바꾸기</button>
+          </div>
+        </article>
+      </section>
 
+      <div class="footer">
+        <span>© <span id="year"></span> 홍길동</span>
+        <span class="muted">이 페이지는 단일 파일(index.html)로 동작합니다.</span>
+      </div>
+    </main>
+  </div>
 
-  <h2>지금 하는 것</h2>
-  <ul>
-    <!-- ===================================================== -->
-    <!-- 바꾸는 곳 4. 목록 항목입니다.                            -->
-    <!-- <li> 한 덩어리가 한 줄입니다. 복사해서 늘리면 됩니다.       -->
-    <!-- ===================================================== -->
-    <li>
-      <b>학습</b>
-      AI 프로덕트 매니저 트랙 (2026.07 - 2026.09)
-    </li>
-    <li>
-      <b>관심</b>
-      결과물보다 과정을 남기는 일. 문제를 정의하고 실행으로 옮기는 구조.
-    </li>
-  </ul>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script>
+    // 연도 자동 표시
+    document.getElementById("year").textContent = new Date().getFullYear();
 
+    // 토스트
+    const toast = document.getElementById("toast");
+    let toastTimer = null;
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1400);
+    }
 
-  <h2>기록</h2>
-  <ul>
-    <!-- ===================================================== -->
-    <!-- 바꾸는 곳 5. 다른 페이지로 가는 링크입니다.                -->
-    <!-- career.html 파일을 만든 뒤에 살아납니다.                  -->
-    <!-- ===================================================== -->
-    <li><a href="career.html">경력 정리 →</a></li>
-  </ul>
+    // 이메일 복사
+    const copyEmailBtn = document.getElementById("copyEmailBtn");
+    copyEmailBtn.addEventListener("click", async () => {
+      const email = document.getElementById("emailText").textContent.trim();
+      try{
+        await navigator.clipboard.writeText(email);
+        showToast("이메일이 복사되었습니다: " + email);
+      }catch(e){
+        showToast("복사에 실패했습니다. 이메일을 직접 복사해 주세요.");
+      }
+    });
 
+    // 테마 토글(간단한 다크/라이트 느낌)
+    const themeBtn = document.getElementById("themeBtn");
+    let light = false;
+    themeBtn.addEventListener("click", () => {
+      light = !light;
+      if(light){
+        document.documentElement.style.setProperty("--bg", "#f6f7fb");
+        document.documentElement.style.setProperty("--text", "#0f172a");
+        document.documentElement.style.setProperty("--muted", "rgba(15,23,42,0.72)");
+        document.documentElement.style.setProperty("--card", "rgba(255,255,255,0.9)");
+        document.documentElement.style.setProperty("--border", "rgba(15,23,42,0.12)");
+        document.documentElement.style.setProperty("--shadow", "0 18px 50px rgba(2,6,23,0.12)");
+        showToast("라이트 테마");
+      }else{
+        document.documentElement.style.setProperty("--bg", "#0b1020");
+        document.documentElement.style.setProperty("--text", "#e9eefc");
+        document.documentElement.style.setProperty("--muted", "rgba(233,238,252,0.75)");
+        document.documentElement.style.setProperty("--card", "rgba(255,255,255,0.06)");
+        document.documentElement.style.setProperty("--border", "rgba(255,255,255,0.12)");
+        document.documentElement.style.setProperty("--shadow", "0 20px 60px rgba(0,0,0,0.45)");
+        showToast("다크 테마");
+      }
+    });
 
-
-  <div class="foot">
-    <!-- 바꾸는 곳 6. 아래 날짜만 오늘로 바꾸면 됩니다. -->
-    2026.07.22 부터 기록합니다.
-  </div>
-
-
-
-</div>
+    // 한 줄 소개 랜덤 변경
+    const lines = [
+      "“작게 만들고, 빠르게 개선합니다.”",
+      "“사용자 경험을 먼저 생각합니다.”",
+      "“문제를 끝까지 추적해 해결합니다.”",
+      "“기록하고 공유하며 성장합니다.”"
+    ];
+    const oneLine = document.getElementById("oneLine");
+    document.getElementById("randomLineBtn").addEventListener("click", () => {
+      const next = lines[Math.floor(Math.random() * lines.length)];
+      oneLine.textContent = next;
+      showToast("문구를 변경했어요.");
+    });
+  </script>
 </body>
 </html>
