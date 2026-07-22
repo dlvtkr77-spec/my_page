@@ -1,60 +1,139 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>조현서 | PM Portfolio</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#111}
-#progress{position:fixed;top:0;left:0;height:3px;background:#111;width:0;z-index:1000}
-header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:24px 8%;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid #eee;z-index:999}
-header a{text-decoration:none;color:#111;margin-left:24px}
-.container{width:min(1100px,90%);margin:auto}
-section{padding:110px 0;border-bottom:1px solid #eee}
-.hero{min-height:100vh;display:flex;align-items:center}
-.hero h1{font-size:72px;font-weight:300;line-height:1}
-.hero p.big{font-size:54px;line-height:1.1;margin:24px 0 16px}
-.subtitle{color:#666}
-.gray{background:#f6f6f6}
-.title{font-size:13px;letter-spacing:3px;color:#888;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
-.card{padding:28px;border:1px solid #ddd;transition:.3s}
-.card:hover{background:#111;color:#fff;transform:translateY(-6px)}
-.timeline{border-left:2px solid #ddd;padding-left:28px}
-.event{margin-bottom:36px}
-.year{font-size:32px;font-weight:300}
-.contact{background:#111;color:#fff;text-align:center}
-.fade{opacity:0;transform:translateY(40px);transition:.8s}
-.fade.show{opacity:1;transform:none}
-footer{padding:30px}
-@media(max-width:700px){.hero h1{font-size:46px}.hero p.big{font-size:34px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHO HYUNSEO — Product Manager</title>
+  <meta name="description" content="AI products for real people. CHO HYUNSEO의 Product Manager 포트폴리오입니다.">
+  <meta name="theme-color" content="#f7f7f5">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="progress"></div>
-<header><strong>CHO HYUNSEO</strong><nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav></header>
-<div class="container">
-<section class="hero">
-<div><h1>CHO HYUNSEO</h1><p class="big">Designing products<br>that solve<br>real problems.</p><p class="subtitle">Product Manager Portfolio</p></div>
-</section>
-<section id="about" class="fade"><div class="title">ABOUT</div><h2>사용자를 이해하는 것이 좋은 제품의 시작이라고 믿습니다.</h2><br><p>AI를 활용한 서비스를 기획하는 PM을 목표로 학습하고 있습니다.</p></section>
-<section id="projects" class="gray fade"><div class="title">PROJECTS</div><div class="grid">
-<div class="card"><h3>AI Resume Assistant</h3><br><p>사용자 문제 정의부터 기능 설계까지 수행한 프로젝트.</p><br><small>Role · PM</small></div>
-<div class="card"><h3>Portfolio Website</h3><br><p>HTML/CSS/JavaScript로 제작한 개인 포트폴리오.</p><br><small>Role · Front-end</small></div>
-</div></section>
-<section class="fade"><div class="title">EXPERIENCE</div><div class="timeline">
-<div class="event"><div class="year">2024</div><p>생성형 AI 학습 시작</p></div>
-<div class="event"><div class="year">2025</div><p>PM 역량 및 서비스 기획 학습</p></div>
-<div class="event"><div class="year">2026</div><p>포트폴리오 구축</p></div>
-</div></section>
-<section id="contact" class="contact fade"><h2>Let's Build Something Meaningful.</h2><br><p>your@email.com</p><p>github.com/your-id</p></section>
-<footer>© 2026 CHO HYUNSEO</footer>
-</div>
-<script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.15});
-document.querySelectorAll('.fade').forEach(e=>io.observe(e));
-addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%'});
-</script>
-</body></html>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#top"><span class="brand-dot"></span>CHO HYUNSEO</a>
+    <nav class="desktop-nav" aria-label="주요 메뉴">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#contact">Let's talk ↗</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span>ASPIRING PRODUCT MANAGER</p>
+        <h1>Designing AI products <span>for real people.</span></h1>
+        <p class="hero-description">사용자의 문제를 발견하고, 복잡한 기술을 이해하기 쉬운 제품 경험으로 연결하는 Product Manager를 목표로 합니다.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#projects">View projects ↓</a>
+          <a class="button button-light" href="#about">About me</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" data-tilt>
+        <div class="portrait-frame">
+          <div class="portrait-glow"></div>
+          <img src="assets/profile.jpg" alt="조현서 프로필 사진" onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
+          <div class="portrait-placeholder" hidden><span>PROFILE IMAGE</span><strong>assets/profile.jpg</strong></div>
+          <div class="floating-label floating-label-top">Product thinking</div>
+          <div class="floating-label floating-label-bottom">AI × User Experience</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about section-shell section-space">
+      <div class="section-label reveal"><span>01</span>About</div>
+      <div class="about-grid">
+        <h2 class="section-heading reveal">Technology matters.<br>People matter more.</h2>
+        <div class="about-copy reveal">
+          <p class="lead">좋은 제품은 기능에서 시작하지 않고, 사용자의 상황을 정확히 이해하는 것에서 시작한다고 믿습니다.</p>
+          <p>개발을 공부하며 기술이 작동하는 방식을 배웠고, 그 과정에서 기술을 직접 구현하는 것보다 어떤 문제에 어떻게 적용할지를 설계하는 일에 더 큰 흥미를 발견했습니다.</p>
+          <p>이제는 AI를 활용해 실제 사용자의 문제를 해결하는 제품을 기획하는 PM을 목표로 학습하고 프로젝트를 만들고 있습니다.</p>
+        </div>
+      </div>
+      <div class="principles">
+        <article class="principle-card reveal"><span>01</span><h3>Start with the problem</h3><p>기능보다 먼저 사용자가 겪는 문제와 맥락을 정의합니다.</p></article>
+        <article class="principle-card reveal"><span>02</span><h3>Make complexity simple</h3><p>복잡한 기술을 사용자가 이해하기 쉬운 경험으로 바꿉니다.</p></article>
+        <article class="principle-card reveal"><span>03</span><h3>Learn through iteration</h3><p>가설을 세우고 검증하며 더 나은 방향으로 빠르게 개선합니다.</p></article>
+      </div>
+    </section>
+
+    <section id="projects" class="projects section-space">
+      <div class="section-shell">
+        <div class="section-label section-label-light reveal"><span>02</span>Selected projects</div>
+        <div class="project-intro">
+          <h2 class="section-heading section-heading-light reveal">Selected work.</h2>
+          <p class="reveal">문제 정의부터 제품 전략, 사용자 흐름, 프로토타입까지 PM 관점에서 정리한 프로젝트입니다.</p>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card featured-project reveal">
+            <div class="project-meta"><span>FEATURED CASE STUDY</span><span>2026</span></div>
+            <div class="project-content">
+              <div>
+                <p class="project-number">01</p>
+                <h3>AI Resume Assistant</h3>
+                <p>사용자가 자신의 경험을 채용 담당자가 이해하기 쉬운 서류로 전환하도록 돕는 AI 커리어 서비스.</p>
+                <ul class="tag-list"><li>Product Strategy</li><li>User Flow</li><li>AI Product</li></ul>
+              </div>
+              <a href="#">Case study ↗</a>
+            </div>
+            <div class="project-visual">
+              <div class="mock-window">
+                <div class="mock-window-bar"><i></i><i></i><i></i></div>
+                <div class="mock-body"><div class="mock-sidebar"></div><div class="mock-main"><span></span><strong></strong><p></p><p></p><button></button></div></div>
+              </div>
+            </div>
+          </article>
+
+          <div class="project-grid">
+            <article class="project-card compact-project reveal">
+              <div class="project-meta"><span>WEB PORTFOLIO</span><span>2026</span></div>
+              <div class="compact-project-copy"><p class="project-number">02</p><h3>PM Portfolio</h3><p>콘텐츠 구조, 시각적 위계, 인터랙션을 직접 설계한 개인 포트폴리오.</p></div>
+              <div class="mini-visual mini-visual-one"><span></span><span></span><span></span></div>
+            </article>
+            <article class="project-card compact-project reveal">
+              <div class="project-meta"><span>COMING NEXT</span><span>2026</span></div>
+              <div class="compact-project-copy"><p class="project-number">03</p><h3>Next Product</h3><p>새로운 사용자 문제를 탐색하고 제품 가설을 검증할 예정입니다.</p></div>
+              <div class="mini-visual mini-visual-two"><div></div><div></div></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="experience section-shell section-space">
+      <div class="section-label reveal"><span>03</span>Experience</div>
+      <div class="experience-grid">
+        <h2 class="section-heading reveal">Building the path,<br>one step at a time.</h2>
+        <div class="timeline">
+          <article class="timeline-item reveal"><div class="timeline-year">2024</div><div><h3>Generative AI Learning</h3><p>생성형 AI와 디지털 제품에 대한 학습을 시작했습니다.</p></div></article>
+          <article class="timeline-item reveal"><div class="timeline-year">2025</div><div><h3>Product Management</h3><p>사용자 문제 정의와 서비스 기획 방법론을 학습했습니다.</p></div></article>
+          <article class="timeline-item reveal"><div class="timeline-year">2026</div><div><h3>Portfolio & Projects</h3><p>PM 관점의 프로젝트와 포트폴리오를 구축하고 있습니다.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section section-shell"><p class="quote-mark reveal">“</p><blockquote class="reveal">I want to build AI products that people can <span>understand, trust, and actually use.</span></blockquote></section>
+
+    <section id="contact" class="contact section-space">
+      <div class="section-shell contact-inner">
+        <p class="eyebrow eyebrow-light reveal">OPEN TO OPPORTUNITIES</p>
+        <h2 class="reveal">Let's build something <span>meaningful.</span></h2>
+        <p class="contact-description reveal">AI 제품, 사용자 경험, 새로운 문제 해결에 관한 대화를 기다리고 있습니다.</p>
+        <div class="contact-links reveal">
+          <a href="mailto:your@email.com">your@email.com ↗</a>
+          <a href="https://github.com/your-id" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>© 2026 CHO HYUNSEO</p><p>Designed with intention.</p><a href="#top">Back to top ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
